@@ -1,0 +1,268 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS for the navigation bar */
+        .navbar {
+            background-color: black;
+            /* Set the background color to black */
+        }
+
+        .navbar-nav .nav-link {
+            color: white;
+            /* Set the text color to white */
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static '/app/css/home.css'%}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <a class="navbar-brand" href="#">Your Logo</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/app/home/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/app/home/about/">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Advance</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.min.js"></script>
+
+    <header class="container">
+        <h1 class="mt-4"> Area Selection Form </h1>
+    </header>
+
+    <main class="container mt-4">
+        <section id="dropdown-section">
+            <form id="dropdown-form" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="state-select">Select State:</label>
+                    <select class="form-control" id="state-select" name="state" required>
+                        <option value="">Select a state</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="city-select">Select City:</label>
+                    <select class="form-control" id="city-select" name="city" required>
+                        <option value="">Select a city</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="tehsil-select">Select Tehsil:</label>
+                    <select class="form-control" id="tehsil-select" name="tehsil" required>
+                        <option value="">Select a tehsil</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </section>
+    </main>
+    <footer> </footer>
+
+    <script src=" https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        const stateData = [
+            "Andhra Pradesh",
+            "Arunachal Pradesh",
+            "Assam",
+            "Bihar",
+            "Chhattisgarh",
+            "Goa",
+            "Gujarat",
+            "Haryana",
+            "Himachal Pradesh",
+            "Jharkhand",
+            "Karnataka",
+            "Kerala",
+            "Madhya Pradesh",
+            "Maharashtra",
+            "Manipur",
+            "Meghalaya",
+            "Mizoram",
+            "Nagaland",
+            "Odisha (formerly Orissa)",
+            "Punjab",
+            "Rajasthan",
+            "Sikkim",
+            "Tamil Nadu",
+            "Telangana",
+            "Tripura",
+            "Uttar Pradesh",
+            "Uttarakhand",
+            "West Bengal",
+        ];
+
+        const cityData = {
+            "Madhya Pradesh": [
+                "Bhopal (Capital city)",
+                "Indore",
+                "Jabalpur",
+                "Gwalior",
+                "Ujjain",
+                "Sagar",
+                "Dewas",
+                "Satna",
+                "Ratlam",
+                "Rewa",
+                "Katni",
+                "Burhanpur",
+                "Chhindwara",
+                "Damoh",
+                "Shivpuri",
+                "Mandsaur",
+                "Neemuch",
+                "Vidisha",
+                "Hoshangabad",
+                "Itarsi",
+                "Betul",
+                "Seoni",
+                "Khandwa",
+                "Khargone",
+                "Morena",
+                "Balaghat",
+                "Singrauli",
+                "Shahdol",
+                "Narsinghpur",
+                "Sehore",
+                "Harda",
+                "Panna",
+                "Chhatarpur",
+                "Rajgarh",
+                "Datia",
+                "Anuppur",
+                "Guna",
+                "Ashoknagar",
+                "Dhar",
+                "Agar Malwa",
+                "Shajapur",
+                "Raisen",
+                "Tikamgarh",
+                "Sheopur",
+                "Mandla",
+                "Dindori",
+                "Alirajpur",
+                "Niwari",
+            ],
+            // Add cities for other states here
+        };
+
+        const tehsilData = {
+            // Add tehsils for each city here
+            "Indore": [
+                "DEPALPUR_data",
+                "DR.AMBEDKAR NAGAR-mahow_data",
+                "INDORE-1_data",
+                "INDORE-2_data",
+                "INDORE-3_data",
+                "INDORE-4_data",
+                "INDORE-5_data",
+                "RAU_data",
+                "SANWER_data",
+                "ALL"
+
+            ],
+
+            "Bhopal (Capital city)": [
+                "BERASIYA_data",
+                "BHOPAL DAKSHIN-PASHIM_data",
+                "BHOPAL MADHYA_data",
+                "BHOPAL UTTAR_data",
+                "GOVINDPURA_data",
+                "HUZUR_data",
+                "NARELA_data",
+                "ALL"
+            ]
+        };
+
+
+        const stateSelect = document.getElementById("state-select");
+        const citySelect = document.getElementById("city-select");
+        const tehsilSelect = document.getElementById("tehsil-select");
+
+        // Populate the state dropdown with options
+        stateData.forEach(state => {
+            const optionElement = document.createElement("option");
+            optionElement.value = state;
+            optionElement.textContent = state;
+            stateSelect.appendChild(optionElement);
+        });
+
+        stateSelect.addEventListener("change", function () {
+            const selectedState = stateSelect.value;
+            const cities = cityData[selectedState] || [];
+            populateDropdown(citySelect, cities);
+            clearDropdowns(tehsilSelect, villageSelect);
+        });
+
+        citySelect.addEventListener("change", function () {
+            const selectedCity = citySelect.value;
+            const tehsils = tehsilData[selectedCity] || [];
+            populateDropdown(tehsilSelect, tehsils);
+            clearDropdown(villageSelect);
+        });
+
+        tehsilSelect.addEventListener("change", function () {
+            const selectedTehsil = tehsilSelect.value;
+            const villages = villageData[selectedTehsil] || [];
+            populateDropdown(villageSelect, villages);
+        });
+
+        function populateDropdown(dropdown, options) {
+            // Clear the dropdown first
+            clearDropdown(dropdown);
+
+            // Add new options
+            options.forEach(option => {
+                const optionElement = document.createElement("option");
+                optionElement.value = option;
+                optionElement.textContent = option;
+                dropdown.appendChild(optionElement);
+            });
+        }
+
+        function clearDropdown(dropdown) {
+            dropdown.innerHTML = '<option value="">Select an option</option>';
+        }
+
+        function clearDropdowns(...dropdowns) {
+            dropdowns.forEach(dropdown => clearDropdown(dropdown));
+        }
+
+    </script>
+    <!--<script src="{% static '/app/js/home.js'%}"> </script>-->
+</body>
+
+</html>
